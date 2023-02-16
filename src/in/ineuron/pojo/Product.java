@@ -7,6 +7,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 public class Product implements Serializable
 {
 	private static final long serialVersionUID = 1L;
@@ -33,9 +36,11 @@ public class Product implements Serializable
 	private String productSupplier;
 
 	@Column(name = "d_open")
+	@CreationTimestamp
 	private LocalDateTime productOpenDate;
 
 	@Column(name = "d_last_mod")
+	@UpdateTimestamp
 	private LocalDateTime productLastModDate;
 
 	public Integer getProductId()

@@ -1,6 +1,7 @@
 package in.ineuron.main;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 
 import in.ineuron.app_util.AppUtil;
 import in.ineuron.pojo.Product;
@@ -26,7 +27,7 @@ public class UserInputHandler
 	// for getting choice from user
 	public int getUserChoice()
 	{
-		
+
 		System.out.println("\n\n----------------- Services offered -----------------");
 		System.out.println("1 : Add a new product");
 		System.out.println("2 : View product details");
@@ -69,7 +70,7 @@ public class UserInputHandler
 	}
 
 	// to get Product object for adding a new product
-	public  Product getAddProdutInput()
+	public Product getAddProdutInput()
 	{
 		System.out.println("\nYou have selected Add Product Option\n");
 
@@ -107,5 +108,31 @@ public class UserInputHandler
 			e.printStackTrace();
 		}
 		return product;
+	}
+
+	// to get ProductId from user to view a existing product
+	public Integer getProdIdInputToViewProduct()
+	{
+		System.out.println("\nYou have selected View product details Option\n");
+
+		Integer productId = 0;
+
+		// getting buffered reader to read input
+		bufferedReader = AppUtil.getUserTextInputReader();
+
+		System.out.println("Enter Product id to View productDetails ::");
+		try
+		{
+			productId = Integer.parseInt(bufferedReader.readLine());
+		} catch (NumberFormatException | IOException e)
+		{
+			System.err.println("Number is not Valid");
+			e.getCause();
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+
+		return productId;
 	}
 }

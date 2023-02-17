@@ -44,17 +44,22 @@ public class ProductDaoImpl implements IProductDao
 				transaction.commit();
 			else
 				transaction.rollback();
+
+			session.close();
 		}
 
 		// returning generated PrimaryKey
 		return generatedProdId;
 	}
 
+	// Logic for Viewing and existing Product object from Database using prodId
 	@Override
-	public Product viewProduct(Product product)
+	public Product viewProduct(Integer productId)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("ProductDaoImpl.viewProduct()..........................\n");
+		Session session = HibernateUtil.getSession();
+
+		return session.get(Product.class, productId);
 	}
 
 	@Override

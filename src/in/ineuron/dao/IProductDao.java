@@ -6,7 +6,7 @@ public interface IProductDao
 {
 	Integer addProduct(Product product);
 
-	Product viewProduct(Product product);
+	Product viewProduct(Integer productId);
 
 	String updateProduct(Product product);
 

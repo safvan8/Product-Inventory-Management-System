@@ -19,10 +19,13 @@ public class ProductServiceImpl implements IProductService
 	}
 
 	@Override
-	public Product viewProduct(Product product)
+	public Product viewProduct(Integer productId)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("ProductServiceImpl.viewProduct().................\n");
+		
+		// passing to Dao
+		productDao = ProductDaoFactory.getProductDao();
+		return productDao.viewProduct(productId);
 	}
 
 	@Override

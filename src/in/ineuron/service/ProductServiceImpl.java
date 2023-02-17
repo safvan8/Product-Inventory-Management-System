@@ -1,15 +1,21 @@
 package in.ineuron.service;
 
+import in.ineuron.dao.IProductDao;
+import in.ineuron.factory.ProductDaoFactory;
 import in.ineuron.pojo.Product;
 
 public class ProductServiceImpl implements IProductService
 {
+	private IProductDao productDao = null;
 
 	@Override
-	public String addProduct(Product product)
+	public Integer addProduct(Product product)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("ProductServiceImpl.addProduct()............\n");
+		//creating Dao object
+		productDao = ProductDaoFactory.getProductDao();
+		// forwarding to Dao 
+		return productDao.addProduct(product);
 	}
 
 	@Override

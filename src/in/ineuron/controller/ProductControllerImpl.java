@@ -1,15 +1,23 @@
 package in.ineuron.controller;
 
+import in.ineuron.factory.ProductServiceFactory;
 import in.ineuron.pojo.Product;
+import in.ineuron.service.IProductService;
 
 public class ProductControllerImpl implements IProductController
 {
+	private IProductService productService = null;
 
 	@Override
-	public String addProduct(Product product)
+	public Integer addProduct(Product product)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("ProductControllerImpl.addProduct()........\n");
+
+		// creating object of service layer
+		productService = ProductServiceFactory.getProductService();
+		
+		//forwarding to service layer
+		return productService.addProduct(product);
 	}
 
 	@Override

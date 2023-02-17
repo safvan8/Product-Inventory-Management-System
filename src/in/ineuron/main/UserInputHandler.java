@@ -26,7 +26,8 @@ public class UserInputHandler
 	// for getting choice from user
 	public int getUserChoice()
 	{
-		System.out.println("----------------- Services offerd -----------------");
+		
+		System.out.println("\n\n----------------- Services offered -----------------");
 		System.out.println("1 : Add a new product");
 		System.out.println("2 : View product details");
 		System.out.println("3 : Update product details");
@@ -57,6 +58,8 @@ public class UserInputHandler
 
 			if (userInput >= 1 && userInput <= 5)
 				isValidInput = true;
+			else
+				System.err.println("Kindly a Enter a number between 1 to 5");
 
 		}
 //		// closing reader

@@ -3,13 +3,18 @@ package in.ineuron.pojo;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Version;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+@Entity
+@Table(name = "product_table")
 public class Product implements Serializable
 {
 	private static final long serialVersionUID = 1L;
@@ -42,6 +47,10 @@ public class Product implements Serializable
 	@Column(name = "d_last_mod")
 	@UpdateTimestamp
 	private LocalDateTime productLastModDate;
+
+	@Version
+	@Column(name = "version_count")
+	private Integer versionCount;
 
 	public Integer getProductId()
 	{

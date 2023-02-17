@@ -4,7 +4,7 @@ import in.ineuron.pojo.Product;
 
 public interface IProductController
 {
-	String addProduct(Product product);
+	Integer addProduct(Product product);
 
 	Product viewProduct(Product product);
 

@@ -83,7 +83,7 @@ public class ProductDaoImpl implements IProductDao
 
 			// updating database record
 			session.update(product);
-		
+
 			transaction.commit();
 
 			isOperationSuceess = true;
@@ -112,8 +112,47 @@ public class ProductDaoImpl implements IProductDao
 	@Override
 	public String deleteProduct(Product product)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("ProductDaoImpl.deleteProduct()........................\n");
+
+		// creating session object by calling utility method
+		Session session = HibernateUtil.getSession();
+
+		Transaction transaction = null;
+
+		boolean isOperationSuceess = false;
+
+		String deleteStatus = null;
+
+		try
+		{
+			transaction = session.beginTransaction();
+
+			// deleting database record
+			session.delete(product);
+
+			transaction.commit();
+
+			isOperationSuceess = true;
+
+		} catch (HibernateException e)
+		{
+			e.printStackTrace();
+			isOperationSuceess = false;
+
+		} finally
+		{
+			if (isOperationSuceess)
+				deleteStatus = "success";
+			else
+				deleteStatus = "failed";
+
+			// closing session
+			HibernateUtil.closeSession(session);
+		}
+
+		// updating
+
+		return deleteStatus;
 	}
 
 }

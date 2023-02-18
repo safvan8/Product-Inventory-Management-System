@@ -117,6 +117,39 @@ public class TestApp
 				break;
 			case 4:
 
+				int productIdForDelete = userInputHandler.getProductIdforDelete();
+
+				// controller Object
+				productController = ProductControllerFactory.getProductController();
+
+				// passing to controller to check product availble or not
+				Product productToDelete = productController.viewProduct(productIdForDelete);
+
+				String deleteStatus = null;
+
+				if (productToDelete != null)
+				{
+					System.out.println("record avaible for deleteion");
+
+					System.out.println(productToDelete);
+
+					// passing to controller
+					deleteStatus = productController.deleteProduct(productToDelete);
+
+				} else
+				{
+					System.out.println("No record found for deletion");
+				}
+
+				if (deleteStatus.equalsIgnoreCase("success"))
+				{
+					System.out.println("\n\n Product deleted Successfully......... \n\n");
+				} else
+				{
+					System.out.println("\n\nOops... Something went wrong");
+					System.out.println("Product Deletion failed\n\n");
+				}
+
 				break;
 
 			case 5:

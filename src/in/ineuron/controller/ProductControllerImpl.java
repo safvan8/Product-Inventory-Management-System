@@ -44,8 +44,12 @@ public class ProductControllerImpl implements IProductController
 	@Override
 	public String deleteProduct(Product product)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("ProductControllerImpl.deleteProduct()......................\n");
+		
+		//passing to service layer
+		productService = ProductServiceFactory.getProductService();
+		
+		return productService.deleteProduct(product);
 	}
 
 }

@@ -12,9 +12,9 @@ public class ProductServiceImpl implements IProductService
 	public Integer addProduct(Product product)
 	{
 		System.out.println("ProductServiceImpl.addProduct()............\n");
-		//creating Dao object
+		// creating Dao object
 		productDao = ProductDaoFactory.getProductDao();
-		// forwarding to Dao 
+		// forwarding to Dao
 		return productDao.addProduct(product);
 	}
 
@@ -22,7 +22,7 @@ public class ProductServiceImpl implements IProductService
 	public Product viewProduct(Integer productId)
 	{
 		System.out.println("ProductServiceImpl.viewProduct().................\n");
-		
+
 		// passing to Dao
 		productDao = ProductDaoFactory.getProductDao();
 		return productDao.viewProduct(productId);
@@ -32,18 +32,19 @@ public class ProductServiceImpl implements IProductService
 	public String updateProduct(Product product)
 	{
 		System.out.println("ProductServiceImpl.updateProduct().................\n");
-		
-		//passing product to DAO
+
+		// passing product to DAO
 		productDao = ProductDaoFactory.getProductDao();
-		
+
 		return productDao.updateProduct(product);
 	}
 
 	@Override
 	public String deleteProduct(Product product)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		// passing to DAO
+		productDao = ProductDaoFactory.getProductDao();
+		return productDao.deleteProduct(product);
 	}
 
 }

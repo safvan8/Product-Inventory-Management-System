@@ -10,11 +10,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Table(name = "product_table")
+@Cache(usage = CacheConcurrencyStrategy.READ_ONLY)// specifies caching strategy
 public class Product implements Serializable
 {
 	private static final long serialVersionUID = 1L;

@@ -2,7 +2,6 @@ package in.ineuron.main;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-
 import in.ineuron.app_util.AppUtil;
 import in.ineuron.pojo.Product;
 
@@ -206,32 +205,32 @@ public class UserInputHandler
 		}
 		return product;
 	}
-	
+
 	// to get ProductId from user to Delete a existing product
-		public Integer getProductIdforDelete()
+	public Integer getProductIdforDelete()
+	{
+		System.out.println("\nYou have selected Delete a product Option\n");
+
+		Integer productId = 0;
+
+		// getting buffered reader to read input
+		bufferedReader = AppUtil.getUserTextInputReader();
+
+		System.out.println("Enter Product id to Delete a product ::");
+
+		try
 		{
-			System.out.println("\nYou have selected Delete a product Option\n");
-
-			Integer productId = 0;
-
-			// getting buffered reader to read input
-			bufferedReader = AppUtil.getUserTextInputReader();
-
-			System.out.println("Enter Product id to Delete a product ::");
-
-			try
-			{
-				productId = Integer.parseInt(bufferedReader.readLine());
-			} catch (NumberFormatException | IOException e)
-			{
-				System.err.println("Number is not Valid");
-				e.getCause();
-			} catch (Exception e)
-			{
-				e.printStackTrace();
-			}
-
-			return productId;
+			productId = Integer.parseInt(bufferedReader.readLine());
+		} catch (NumberFormatException | IOException e)
+		{
+			System.err.println("Number is not Valid");
+			e.getCause();
+		} catch (Exception e)
+		{
+			e.printStackTrace();
 		}
+
+		return productId;
+	}
 
 }

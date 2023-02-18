@@ -154,5 +154,4 @@ public class ProductDaoImpl implements IProductDao
 
 		return deleteStatus;
 	}
-
 }

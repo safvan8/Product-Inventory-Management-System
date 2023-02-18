@@ -26,15 +26,19 @@ public class ProductControllerImpl implements IProductController
 		System.out.println("ProductControllerImpl.viewProduct()....................\n");
 		// passing to Service layer
 		productService = ProductServiceFactory.getProductService();
-		
+
 		return productService.viewProduct(productId);
 	}
 
 	@Override
 	public String updateProduct(Product product)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("ProductControllerImpl.updateProduct()....................\n");
+
+		// passing to service layer
+		productService = ProductServiceFactory.getProductService();
+		
+		return productService.updateProduct(product);
 	}
 
 	@Override

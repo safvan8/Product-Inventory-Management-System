@@ -135,4 +135,76 @@ public class UserInputHandler
 
 		return productId;
 	}
+
+	// to get ProductId from user to update a existing product
+	public Integer getProductIdforUpdate()
+	{
+		System.out.println("\nYou have selected View product details Option\n");
+
+		Integer productId = 0;
+
+		// getting buffered reader to read input
+		bufferedReader = AppUtil.getUserTextInputReader();
+
+		System.out.println("Enter Product id to Update Existing produc tDetails ::");
+
+		try
+		{
+			productId = Integer.parseInt(bufferedReader.readLine());
+		} catch (NumberFormatException | IOException e)
+		{
+			System.err.println("Number is not Valid");
+			e.getCause();
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+
+		return productId;
+	}
+
+	// to get updated product details from user to existing product object
+	public Product getLatestProductDetailsForUpdate(Product product)
+	{
+		// getting buffered reader to read input
+		bufferedReader = AppUtil.getUserTextInputReader();
+
+		try
+		{
+			System.out.println("Enter new  productName [ old name: " + product.getProductName() + " ]-->");
+			String newProductName = bufferedReader.readLine();
+
+			System.out
+					.println("Enter new  productDescription [ old name: " + product.getProductDescription() + " ]-->");
+			String newProductDescription = bufferedReader.readLine();
+
+			System.out.println("Enter new  productSupplier [ old name: " + product.getProductSupplier() + " ]-->");
+			String newProductSupplier = bufferedReader.readLine();
+
+			// updatingproperties only if user enterd new valid data
+			if (newProductName.trim() != "")
+				product.setProductName(newProductName);
+
+			if (newProductDescription.trim() != "")
+				product.setProductDescription(newProductDescription);
+
+			if (newProductSupplier.trim() != "")
+				product.setProductSupplier(newProductSupplier);
+
+			System.out.println("Enter new  productPrice [ old name: " + product.getProductPrice() + " ]-->");
+			Integer newProductPrice = Integer.parseInt(bufferedReader.readLine());
+			product.setProductPrice(newProductPrice);
+
+			System.out.println("Enter new  productQuantity [ old name: " + product.getProductQuantity() + " ]-->");
+			Integer newProductQuantity = Integer.parseInt(bufferedReader.readLine());
+			product.setProductQuantity(newProductQuantity);
+
+		} catch (NumberFormatException | IOException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return product;
+	}
+
 }

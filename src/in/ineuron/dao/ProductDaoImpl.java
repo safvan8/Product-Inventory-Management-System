@@ -1,5 +1,6 @@
 package in.ineuron.dao;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -65,8 +66,47 @@ public class ProductDaoImpl implements IProductDao
 	@Override
 	public String updateProduct(Product product)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("ProductDaoImpl.updateProduct().....................\n");
+
+		// creating session object by calling utility method
+		Session session = HibernateUtil.getSession();
+
+		Transaction transaction = null;
+
+		boolean isOperationSuceess = false;
+
+		String updateStatus = null;
+
+		try
+		{
+			transaction = session.beginTransaction();
+
+			// updating database record
+			session.update(product);
+		
+			transaction.commit();
+
+			isOperationSuceess = true;
+
+		} catch (HibernateException e)
+		{
+			e.printStackTrace();
+			isOperationSuceess = false;
+
+		} finally
+		{
+			if (isOperationSuceess)
+				updateStatus = "success";
+			else
+				updateStatus = "failed";
+
+			// closing session
+			HibernateUtil.closeSession(session);
+		}
+
+		// updating
+
+		return updateStatus;
 	}
 
 	@Override

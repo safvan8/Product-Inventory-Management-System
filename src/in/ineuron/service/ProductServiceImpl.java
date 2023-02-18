@@ -31,8 +31,12 @@ public class ProductServiceImpl implements IProductService
 	@Override
 	public String updateProduct(Product product)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("ProductServiceImpl.updateProduct().................\n");
+		
+		//passing product to DAO
+		productDao = ProductDaoFactory.getProductDao();
+		
+		return productDao.updateProduct(product);
 	}
 
 	@Override

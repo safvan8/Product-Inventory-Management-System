@@ -49,18 +49,18 @@ public class TestApp
 
 			case 2:
 
-				// existed Product object retrived from DB uisng id
+				// existed Product object retrived from DB using id
 				Product retrivedProduct = null;
 
-				int productId = 0;
+				int productIdForViewing = 0;
 
 				// accepting productId from user:
-				productId = userInputHandler.getProdIdInputToViewProduct();
+				productIdForViewing = userInputHandler.getProdIdInputToViewProduct();
 
 				// passing to controller
 				productController = ProductControllerFactory.getProductController();
 
-				retrivedProduct = productController.viewProduct(productId);
+				retrivedProduct = productController.viewProduct(productIdForViewing);
 
 				if (retrivedProduct != null)
 				{
@@ -77,9 +77,52 @@ public class TestApp
 				break;
 			case 3:
 
+				// existed Product object retrived from DB using id
+				Product existingProduct = null;
+
+				// new product Object for update
+				Product newProduct = null;
+
+				int productIdForUpdate = 0;
+
+				// controller Object
+				productController = ProductControllerFactory.getProductController();
+
+				// accepting productId from user:
+				productIdForUpdate = userInputHandler.getProductIdforUpdate();
+
+				// passing to controller
+				existingProduct = productController.viewProduct(productIdForUpdate);
+
+				String updateStatus = null;
+				if (existingProduct != null)
+				{
+					System.out.println("records found");
+
+					newProduct = userInputHandler.getLatestProductDetailsForUpdate(existingProduct);
+
+					// passsing the record to controller
+					updateStatus = productController.updateProduct(newProduct);
+
+				} else
+				{
+					System.out.println("Record not found...");
+				}
+
+				if (updateStatus.equalsIgnoreCase("success"))
+					System.out.println("Product record Updated  Successfully");
+				else
+					System.out.println("Some thing went wrong .....Product record Updating failed");
+
 				break;
 			case 4:
 
+				break;
+
+			case 5:
+				System.out.println("Thanks Fot using our Application......");
+				System.out.println("Have a Nice Day!");
+				System.exit(0);
 				break;
 
 			default:

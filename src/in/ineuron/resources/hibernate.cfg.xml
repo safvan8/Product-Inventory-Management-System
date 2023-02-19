@@ -13,12 +13,27 @@
 		<property name="show_sql">true</property>
 		<property name="format_sql">true</property>
 		<property name="hibernate.hbm2ddl.auto">update</property>
-		
+
 		<!-- Configuring EH cache... -->
 		<property name="hibernate.cache.use_second_level_cache">true</property>
 		<property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory</property>
 		<property name="net.sf.ehcache.configurationResourceName">/in/ineuron/resources/ehcache.xml</property>
-	
+
+		<!-- Hikari cp configuration -->
+		<property name="hibernate.connection.provider_class">org.hibernate.hikaricp.internal.HikariCPConnectionProvider</property>
+
+		<!-- Maximum waiting time for a connection from the pool (20sec) -->
+		<property name="hibernate.hikari.connectionTimeout">20000</property>
+
+		<!-- Minimum number of ideal connections in the pool -->
+		<property name="hibernate.hikari.minimumIdle">10</property>
+
+		<!-- Maximum number of actual connection in the pool -->
+		<property name="hibernate.hikari.maximumPoolSize">20</property>
+
+		<!-- Maximum time that a connection is allowed to sit ideal in the pool -->
+		<property name="hibernate.hikari.idleTimeout">30000</property>
+
 		<mapping class="in.ineuron.pojo.Product" />
 	</session-factory>
 </hibernate-configuration>

@@ -1,5 +1,6 @@
 package in.ineuron.main;
 
+import java.util.List;
 import in.ineuron.controller.IProductController;
 import in.ineuron.factory.ProductControllerFactory;
 import in.ineuron.pojo.Product;
@@ -153,6 +154,24 @@ public class TestApp
 				break;
 
 			case 5:
+
+				// passing request to controller
+				productController = ProductControllerFactory.getProductController();
+
+				List<Product> productList = productController.viewAllProdutsInfo();
+
+				// to view all products
+				System.out.println("pId\tpName\tprice\tquantity\tsupplier");
+				System.out.println("------------------------------------------------");
+				productList.forEach(product ->
+				{
+					System.out.println(
+							product.getProductId() + "\t" + product.getProductName() + "\t" + product.getProductPrice()
+									+ "\t" + product.getProductQuantity() + "\t" + product.getProductSupplier());
+				});
+
+				break;
+			case 6:
 				System.out.println("Thanks Fot using our Application......");
 				System.out.println("Have a Nice Day!");
 				System.exit(0);

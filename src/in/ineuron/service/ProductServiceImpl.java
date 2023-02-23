@@ -1,5 +1,7 @@
 package in.ineuron.service;
 
+import java.util.List;
+
 import in.ineuron.dao.IProductDao;
 import in.ineuron.factory.ProductDaoFactory;
 import in.ineuron.pojo.Product;
@@ -42,9 +44,27 @@ public class ProductServiceImpl implements IProductService
 	@Override
 	public String deleteProduct(Product product)
 	{
+		System.out.println("ProductServiceImpl.deleteProduct().....................\n");
 		// passing to DAO
 		productDao = ProductDaoFactory.getProductDao();
 		return productDao.deleteProduct(product);
+	}
+
+	@Override
+	public List<Product> viewAllProdutsInfo()
+	{
+		System.out.println("ProductServiceImpl.viewAllProdutsInfo()..............\n");
+		// passing to DAO
+		productDao = ProductDaoFactory.getProductDao();
+
+		return productDao.viewAllProdutsInfo();
+	}
+
+	@Override
+	public boolean authenticateUser(String username, String passwd)
+	{
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

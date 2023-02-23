@@ -42,7 +42,7 @@ public class HibernateUtil
 		}
 	}
 
-	public static void closeSessionFactory(SessionFactory sessionFactory)
+	public static void closeSessionFactory()
 	{
 		if (sessionFactory != null)
 		{

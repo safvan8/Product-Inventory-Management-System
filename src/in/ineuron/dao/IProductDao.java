@@ -1,5 +1,7 @@
 package in.ineuron.dao;
 
+import java.util.List;
+
 import in.ineuron.pojo.Product;
 
 public interface IProductDao
@@ -11,4 +13,7 @@ public interface IProductDao
 	String updateProduct(Product product);
 
 	String deleteProduct(Product product);
+
+	List<Product> viewAllProdutsInfo();
+
 }

@@ -1,5 +1,7 @@
 package in.ineuron.service;
 
+import java.util.List;
+
 import in.ineuron.pojo.Product;
 
 public interface IProductService
@@ -11,4 +13,9 @@ public interface IProductService
 	String updateProduct(Product product);
 
 	String deleteProduct(Product product);
+
+	List<Product> viewAllProdutsInfo();
+
+	boolean authenticateUser(String username, String passwd);
+
 }

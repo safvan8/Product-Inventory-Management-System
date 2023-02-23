@@ -32,9 +32,10 @@ public class UserInputHandler
 		System.out.println("2 : View product details");
 		System.out.println("3 : Update product details");
 		System.out.println("4 : Delete a product");
-		System.out.println("5 : EXIT");
+		System.out.println("5 : View All products");
+		System.out.println("6 : EXIT");
 
-		System.out.println("Enter your choice [ 1 to 5 ]...");
+		System.out.println("Enter your choice [ 1 to 6 ]...");
 
 		Integer userInput = 0;
 		boolean isValidInput = false;
@@ -56,10 +57,10 @@ public class UserInputHandler
 				System.err.println("Something went wrong " + e);
 			}
 
-			if (userInput >= 1 && userInput <= 5)
+			if (userInput >= 1 && userInput <= 6)
 				isValidInput = true;
 			else
-				System.err.println("Kindly a Enter a number between 1 to 5");
+				System.err.println("Kindly a Enter a number between 1 to 6");
 
 		}
 //		// closing reader

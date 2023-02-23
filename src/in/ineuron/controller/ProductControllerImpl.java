@@ -1,5 +1,7 @@
 package in.ineuron.controller;
 
+import java.util.List;
+
 import in.ineuron.factory.ProductServiceFactory;
 import in.ineuron.pojo.Product;
 import in.ineuron.service.IProductService;
@@ -50,6 +52,17 @@ public class ProductControllerImpl implements IProductController
 		productService = ProductServiceFactory.getProductService();
 		
 		return productService.deleteProduct(product);
+	}
+
+	@Override
+	public List<Product> viewAllProdutsInfo()
+	{
+		System.out.println("ProductControllerImpl.viewAllProdutsInfo(................\n)");
+		
+		//passing to service layer
+		productService = ProductServiceFactory.getProductService();
+		
+		return productService.viewAllProdutsInfo();
 	}
 
 }

@@ -1,6 +1,8 @@
 package in.ineuron.dao;
 
+import java.util.List;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -57,10 +59,23 @@ public class ProductDaoImpl implements IProductDao
 	@Override
 	public Product viewProduct(Integer productId)
 	{
+		Product product = null;
 		System.out.println("ProductDaoImpl.viewProduct()..........................\n");
 		Session session = HibernateUtil.getSession();
+		try
+		{
+			product = session.get(Product.class, productId);
+		} catch (HibernateException e)
+		{
+			e.printStackTrace();
+		} finally
+		{
+			HibernateUtil.closeSession(session);
+			HibernateUtil.closeSessionFactory();
 
-		return session.get(Product.class, productId);
+		}
+
+		return product;
 	}
 
 	@Override
@@ -102,6 +117,7 @@ public class ProductDaoImpl implements IProductDao
 
 			// closing session
 			HibernateUtil.closeSession(session);
+			HibernateUtil.closeSessionFactory();
 		}
 
 		// updating
@@ -109,6 +125,7 @@ public class ProductDaoImpl implements IProductDao
 		return updateStatus;
 	}
 
+	// Logic for deleting an existing Product to Database
 	@Override
 	public String deleteProduct(Product product)
 	{
@@ -148,10 +165,41 @@ public class ProductDaoImpl implements IProductDao
 
 			// closing session
 			HibernateUtil.closeSession(session);
+			HibernateUtil.closeSessionFactory();
 		}
 
 		// updating
 
 		return deleteStatus;
+	}
+
+	// code for viewing all records info
+	@Override
+	public List<Product> viewAllProdutsInfo()
+	{
+		System.out.println("ProductDaoImpl.viewAllProdutsInfo().........\n");
+
+		// creating session object by calling utility method
+		Session session = HibernateUtil.getSession();
+
+		List<Product> allProducts = null;
+
+		try
+		{
+			// creating a Query collection , which can hold Employee Objects
+			Query<Product> query = session.createQuery("FROM in.ineuron.pojo.Product");
+
+			allProducts = query.getResultList();
+
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		} finally
+		{
+			HibernateUtil.closeSession(session);
+			HibernateUtil.closeSessionFactory();
+		}
+
+		return allProducts;
 	}
 }

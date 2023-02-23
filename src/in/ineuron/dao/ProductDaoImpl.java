@@ -202,4 +202,13 @@ public class ProductDaoImpl implements IProductDao
 
 		return allProducts;
 	}
+
+	// logic for user authentication
+	@Override
+	public boolean authenticateUser()
+	{
+		UserValidator userValidator = new UserValidator();
+		
+		return userValidator.authenticateUser();
+	}
 }

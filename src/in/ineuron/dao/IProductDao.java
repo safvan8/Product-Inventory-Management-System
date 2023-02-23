@@ -16,4 +16,5 @@ public interface IProductDao
 
 	List<Product> viewAllProdutsInfo();
 
+	boolean authenticateUser();
 }

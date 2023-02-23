@@ -16,6 +16,6 @@ public interface IProductService
 
 	List<Product> viewAllProdutsInfo();
 
-	boolean authenticateUser(String username, String passwd);
+	boolean authenticateUser();
 
 }

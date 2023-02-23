@@ -61,10 +61,11 @@ public class ProductServiceImpl implements IProductService
 	}
 
 	@Override
-	public boolean authenticateUser(String username, String passwd)
+	public boolean authenticateUser()
 	{
-		// TODO Auto-generated method stub
-		return false;
+		productDao = ProductDaoFactory.getProductDao();
+		
+		return productDao.authenticateUser();
 	}
 
 }

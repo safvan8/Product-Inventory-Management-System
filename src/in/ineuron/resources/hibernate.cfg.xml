@@ -35,6 +35,7 @@
 		<property name="hibernate.hikari.idleTimeout">30000</property>
 
 		<mapping class="in.ineuron.pojo.Product" />
+		<mapping class="in.ineuron.pojo.Customer" />
 	</session-factory>
 </hibernate-configuration>
 

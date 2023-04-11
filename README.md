@@ -1,8 +1,7 @@
 <h1>Product-Inventory-Management-System</h1>
 <p>Manage your online store's inventory with this Java console app. Create, view, update, and remove products using Hibernate ORM. Built with Factory design pattern and layered approach for scalability and maintainability.</p>
 
-<h2>Architecture</h2>
-![image](https://user-images.githubusercontent.com/108913933/219918213-829c923c-a443-4ce8-b2c8-dd30022e06a3.png)
+![image](https://user-images.githubusercontent.com/108913933/231226665-70573726-9dfb-4e93-b8c8-5fe84ab1a1ca.png)
 
 <h2>Features</h2>
 <ul>
